@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手风琴</title>
+	<link rel="stylesheet" href="./../reset.css">
+	<script src="./../jquery-3.4.1.js"></script>
+	<style>
+		.wrap{
+			width:1010px;
+			margin:100px auto;
+		}
+		.wrap li{
+			width:200px;
+			float:left;
+			height:400px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script>
+	</script>
+</body>
+</html>
+<script type="text/javascript">
+	$(function () {
+		$('.wrap li').each(function (index, dom) {
+			//dom.css() //dom是一个dom元素对象
+			$(dom).css('background', 'url(./images/'+(index+1)+'.jpg)')
+		}).mouseover(function () {
+			//先停止当前的动画动作 再执行下一个动作			
+			$(this).stop().animate({width:600}, 500).siblings().stop().animate({width:100}, 500)
+		}).mouseout(function () {
+			//所有图片都复原到原来的位置和大小
+			$('.wrap li').stop().animate({width:200}, 500);
+		})
+
+	})
+</script>
